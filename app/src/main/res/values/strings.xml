@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">NewsApp</string>
+    <string name="headlines">Headlines</string>
+    <string name="favourites">Favourites</string>
+    <string name="search">Search</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">todo</string>
+    <string name="favourites_">Favourites.</string>
+    <string name="headlines_">Headlines.</string>
+    <string name="search_">Search.</string>
+    <string name="search_news">Search news...</string>
+    <string name="no_internet">No Internet</string>
+    <string name="retry">Retry</string>
+</resources>
