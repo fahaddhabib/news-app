@@ -1,40 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/news_nav_graph"
     app:startDestination="@id/headlinesFragment">
 
+    <fragment
+        android:id="@+id/headlinesFragment"
+        android:name="com.example.newsapp.ui.fragments.HeadlinesFragment"
+        android:label="HeadlinesFragment">
+        <action
+            android:id="@+id/action_headlinesFragment_to_articleFragment"
+            app:destination="@id/articleFragment"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.example.newsapp.ui.fragments.FavouritesFragment"
+        android:label="FavouritesFragment">
+        <action
+            android:id="@+id/action_favouritesFragment_to_articleFragment"
+            app:destination="@id/articleFragment"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.newsapp.ui.fragments.SearchFragment"
+        android:label="SearchFragment">
+        <action
+            android:id="@+id/action_searchFragment_to_articleFragment"
+            app:destination="@id/articleFragment"/>
+
+    </fragment>
     <fragment
         android:id="@+id/articleFragment"
         android:name="com.example.newsapp.ui.fragments.ArticleFragment"
         android:label="ArticleFragment" >
         <argument
             android:name="article"
-            app:argType="com.example.newsapp.models.Article"
-            />
-    </fragment>
-    <fragment
-        android:id="@+id/favouritesFragment"
-        android:name="com.example.newsapp.ui.fragments.FavouritesFragment"
-        android:label="FavouritesFragment" >
-        <action
-            android:id="@+id/action_favouritesFragment2_to_articleFragment"
-            app:destination="@id/articleFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/headlinesFragment"
-        android:name="com.example.newsapp.ui.fragments.HeadlinesFragment"
-        android:label="HeadlinesFragment" >
-        <action
-            android:id="@+id/action_headlinesFragment2_to_articleFragment"
-            app:destination="@id/articleFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.example.newsapp.ui.fragments.SearchFragment"
-        android:label="SearchFragment" >
-        <action
-            android:id="@+id/action_searchFragment2_to_articleFragment"
-            app:destination="@id/articleFragment" />
+            app:argType="com.example.newsprojectpractice.models.Article" />
     </fragment>
 </navigation>

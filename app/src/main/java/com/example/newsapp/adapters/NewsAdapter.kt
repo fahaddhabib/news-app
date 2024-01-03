@@ -16,11 +16,11 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     inner class ArticleViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
-    lateinit var ArticleImage: ImageView
-    lateinit var ArticleSource: TextView
-    lateinit var ArticleTitle: TextView
-    lateinit var ArticleDescription: TextView
-    lateinit var ArticleDateTime: TextView
+    private lateinit var articleImage: ImageView
+    private lateinit var articleSource: TextView
+    private lateinit var articleTitle: TextView
+    private lateinit var articleDescription: TextView
+    private lateinit var articleDateTime: TextView
 
 
     private val differentCallBack= object : DiffUtil.ItemCallback<Article>(){
@@ -31,7 +31,7 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
             return oldItem == newItem
         } }
-    val differ = AsyncListDiffer(this, differentCallBack)
+    private val differ = AsyncListDiffer(this, differentCallBack)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
 
@@ -48,18 +48,18 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = differ.currentList[position]
-        ArticleImage = holder.itemView.findViewById(R.id.articleImage)
-        ArticleSource = holder.itemView.findViewById(R.id.articleSource)
-        ArticleTitle = holder.itemView.findViewById(R.id.articleTitle)
-        ArticleDescription = holder.itemView.findViewById(R.id.articleDescription)
-        ArticleDateTime = holder.itemView.findViewById(R.id.articleDateTime)
+        articleImage = holder.itemView.findViewById(R.id.articleImage)
+        articleSource = holder.itemView.findViewById(R.id.articleSource)
+        articleTitle = holder.itemView.findViewById(R.id.articleTitle)
+        articleDescription = holder.itemView.findViewById(R.id.articleDescription)
+        articleDateTime = holder.itemView.findViewById(R.id.articleDateTime)
 
         holder.itemView.apply {
-            Glide.with(this).load(article.urlToImage).into(ArticleImage)
-            ArticleSource.text = article.source?.name
-            ArticleTitle.text = article.title
-            ArticleDescription.text = article.description
-            ArticleDateTime.text = article.publishedAt
+            Glide.with(this).load(article.urlToImage).into(articleImage)
+            articleSource.text = article.source.name
+            articleTitle.text = article.title
+            articleDescription.text = article.description
+            articleDateTime.text = article.publishedAt
 
             setOnClickListener {
                 onItemClickListener?. let {
