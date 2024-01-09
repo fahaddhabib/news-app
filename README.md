@@ -45,6 +45,10 @@ The app uses the NewsAPI, and you need to obtain an API key. Follow these steps:
 
     const val API_KEY = "your-api-key"
 
+## Screenshots and GIFs
+
+![App Screenshot](https://drive.google.com/your-image-link)
+
 Contributing
 
 If you would like to contribute to the project, feel free to fork the repository, create a new branch, and submit a pull request.
