@@ -47,7 +47,7 @@ The app uses the NewsAPI, and you need to obtain an API key. Follow these steps:
 
 ## Screenshots and GIFs
 
-![App Screenshot](https://github.com/fahaddhabib/news-app/blob/master/screenshots/newsapp.jpg)
+![App Screenshot](https://github.com/fahaddhabib/news-app/blob/master/screenshots/newsapp.jpg) ![App Screenshot](https://github.com/fahaddhabib/news-app/blob/master/screenshots/newsapp.jpg)
 
 Contributing
 
