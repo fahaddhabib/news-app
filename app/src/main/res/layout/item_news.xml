@@ -26,6 +26,17 @@
         app:layout_constraintTop_toBottomOf="@+id/articleImage" />
 
     <TextView
+        android:id="@+id/articleId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="ID"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/purple"
+        app:layout_constraintStart_toEndOf="@+id/articleSource"
+        app:layout_constraintTop_toBottomOf="@+id/articleImage" />
+
+    <TextView
         android:id="@+id/articleTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

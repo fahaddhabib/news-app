@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AbsListView
 import android.widget.Button
 import android.widget.TextView
@@ -15,7 +14,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.newsapp.R
 import com.example.newsapp.adapters.NewsAdapter
 import com.example.newsapp.databinding.FragmentHeadlinesBinding
@@ -63,8 +61,8 @@ class HeadlinesFragment : Fragment(R.layout.fragment_headlines) {
                     hideErrorMessage()
                     response.data?.let {newsResponse ->
                         newsAdapter.differ.submitList(newsResponse.articles.toList())
-                        val totalPgaes = newsResponse.totalResults / Constants.QUERY_PAGE_SIZE +2
-                        isLastPage = newsViewModel.headlinesPage == totalPgaes
+                        val totalPages = newsResponse.totalResults / Constants.QUERY_PAGE_SIZE +2
+                        isLastPage = newsViewModel.headlinesPage == totalPages
                         if(isLastPage){
                             binding.recyclerHeadlines.setPadding(0,0,0,0)
 

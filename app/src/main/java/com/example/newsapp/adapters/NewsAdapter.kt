@@ -1,10 +1,12 @@
 package com.example.newsapp.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +20,7 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     private lateinit var articleImage: ImageView
     private lateinit var articleSource: TextView
+    private lateinit var articleID: TextView
     private lateinit var articleTitle: TextView
     private lateinit var articleDescription: TextView
     private lateinit var articleDateTime: TextView
@@ -50,6 +53,7 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         val article = differ.currentList[position]
         articleImage = holder.itemView.findViewById(R.id.articleImage)
         articleSource = holder.itemView.findViewById(R.id.articleSource)
+        articleID = holder.itemView.findViewById(R.id.articleId)
         articleTitle = holder.itemView.findViewById(R.id.articleTitle)
         articleDescription = holder.itemView.findViewById(R.id.articleDescription)
         articleDateTime = holder.itemView.findViewById(R.id.articleDateTime)
@@ -57,12 +61,14 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         holder.itemView.apply {
             Glide.with(this).load(article.urlToImage).into(articleImage)
             articleSource.text = article.source.name
+            articleID.text = ":"+article.source.id
             articleTitle.text = article.title
             articleDescription.text = article.description
             articleDateTime.text = article.publishedAt
 
             setOnClickListener {
                 onItemClickListener?. let {
+                    Log.e("NewsAdapter", "Clicked item has a null article $article")
                     it(article)
                 }
             }
