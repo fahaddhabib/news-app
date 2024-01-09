@@ -47,7 +47,7 @@ The app uses the NewsAPI, and you need to obtain an API key. Follow these steps:
 
 ## Screenshots and GIFs
 
-![App Screenshot](https://drive.google.com/your-image-link)
+![App Screenshot]([https://drive.google.com/your-image-link](https://drive.google.com/file/d/17wtKS8e8KBVZ_YyoC3EAasBeaEqjNj9j/view?usp=drive_link))
 
 Contributing
 
