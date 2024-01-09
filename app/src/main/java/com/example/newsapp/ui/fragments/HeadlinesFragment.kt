@@ -10,7 +10,6 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -38,10 +37,10 @@ class HeadlinesFragment : Fragment(R.layout.fragment_headlines) {
 
         itemHeadlinesError = view.findViewById(R.id.itemHeadlinesError)
         val inflater = requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view: View = inflater.inflate(R.layout.item_error, null)
+        val errorView: View = inflater.inflate(R.layout.item_error, null)
 
-        retryButton = view.findViewById(R.id.retryButton)
-        errorText = view.findViewById(R.id.errorText)
+        retryButton = errorView.findViewById(R.id.retryButton)
+        errorText = errorView.findViewById(R.id.errorText)
 
         newsViewModel = (activity as NewsActivity).newsViewModel
         setUpHeadlinesRecycler()
@@ -54,35 +53,35 @@ class HeadlinesFragment : Fragment(R.layout.fragment_headlines) {
             findNavController().navigate(R.id.action_headlinesFragment_to_articleFragment, bundle)
         }
 
-        newsViewModel.headlines.observe(viewLifecycleOwner, Observer { response ->
-            when(response){
-                is Resource.Success<*> ->{
+        newsViewModel.headlines.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is Resource.Success<*> -> {
                     hideProgressBar()
                     hideErrorMessage()
-                    response.data?.let {newsResponse ->
-                        newsAdapter.differ.submitList(newsResponse.articles.toList())
-                        val totalPages = newsResponse.totalResults / Constants.QUERY_PAGE_SIZE +2
+                    response.data?.let { newsResponse ->
+                        newsAdapter.submitList(newsResponse.articles.toList())
+                        val totalPages = newsResponse.totalResults / Constants.QUERY_PAGE_SIZE + 2
                         isLastPage = newsViewModel.headlinesPage == totalPages
-                        if(isLastPage){
-                            binding.recyclerHeadlines.setPadding(0,0,0,0)
+                        if (isLastPage) {
+                            binding.recyclerHeadlines.setPadding(0, 0, 0, 0)
 
                         }
                     }
                 }
 
-                is Resource.Error<*> ->{
+                is Resource.Error<*> -> {
                     hideProgressBar()
-                    response.message?.let {message ->
-                        Toast.makeText(context,"Sorry Error: $message", Toast.LENGTH_LONG).show()
+                    response.message?.let { message ->
+                        Toast.makeText(context, "Sorry Error: $message", Toast.LENGTH_LONG).show()
                         showErrorMessage(message)
                     }
                 }
 
-                is Resource.Loading<*> ->{
+                is Resource.Loading<*> -> {
                     showProgressBar()
                 }
             }
-        })
+        }
 
         retryButton.setOnClickListener {
             newsViewModel.getHeadlines("us")

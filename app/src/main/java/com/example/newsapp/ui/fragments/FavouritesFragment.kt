@@ -3,7 +3,6 @@ package com.example.newsapp.ui.fragments
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -62,10 +61,10 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
         ItemTouchHelper(itemTouchHelperCallback).apply {
             attachToRecyclerView(binding.recyclerFavourites)
         }
-        newsViewModel.getFavouriteNews().observe(viewLifecycleOwner, Observer { articles ->
-            newsAdapter.differ.submitList(articles)
+        newsViewModel.getFavouriteNews().observe(viewLifecycleOwner) { articles ->
+            newsAdapter.submitList(articles)
 
-        })
+        }
     }
 
     private fun setupFavouriteRecycler(){
