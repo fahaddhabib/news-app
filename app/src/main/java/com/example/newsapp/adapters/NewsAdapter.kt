@@ -1,5 +1,6 @@
 package com.example.newsapp.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,6 +58,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
             setOnClickListener {
                 onItemClickListener?.let {
+                    Log.e("NewsAdapter","Clicked a null article: $article")
                     it(article)
                 }
             }
@@ -68,7 +70,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     }
 
     fun submitList(articles: List<Article>) {
-        val filteredList = articles.filter { it.source.id != null }
+        val filteredList = articles.filter { it.source.id != null}
         differ.submitList(filteredList)
     }
 }
