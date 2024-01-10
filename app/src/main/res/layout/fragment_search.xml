@@ -30,6 +30,8 @@
         android:padding="8dp"
         android:textSize="14sp"
         android:fontFamily="@font/poppins_medium"
+        android:imeOptions="actionDone"
+        android:inputType="text"
         android:drawableTint="@color/purple"
         android:background="@drawable/search_border"
         android:drawableEnd="@drawable/baseline_content_paste_search_24"

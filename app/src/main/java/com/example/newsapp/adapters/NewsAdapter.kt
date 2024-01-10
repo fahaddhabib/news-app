@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -58,8 +59,13 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
             setOnClickListener {
                 onItemClickListener?.let {
-                    Log.e("NewsAdapter","Clicked a null article: $article")
+                    Log.e("NewsAdapter", "Clicked an null article:$article")
+                if(article.urlToImage == null || article.source.id == null || article.author == null) {
+                    Toast.makeText(context,"This Article Is No Longer available",Toast.LENGTH_SHORT).show()
+                    }
+                    else{
                     it(article)
+                }
                 }
             }
         }
@@ -69,8 +75,9 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         onItemClickListener = listener
     }
 
+    // for applying filters and excluding articles which has some null vales
     fun submitList(articles: List<Article>) {
-        val filteredList = articles.filter { it.source.id != null}
+        val filteredList = articles.filter { it.source.id != null }
         differ.submitList(filteredList)
     }
 }
