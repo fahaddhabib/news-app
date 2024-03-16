@@ -9,6 +9,8 @@ NewsApp is an Android application that allows users to read the latest news arti
 - Save Favorites: Save your favorite articles for later reading.
 - Offline Support: View previously fetched articles even without an internet connection.
 
+![App Tutorial](https://github.com/fahaddhabib/news-app/blob/testbranch1/screenshots/newsappgif.gif)
+
 ## Technologies Used
 
 - Android Studio
@@ -45,7 +47,7 @@ The app uses the NewsAPI, and you need to obtain an API key. Follow these steps:
 
     const val API_KEY = "your-api-key"
 
-## Screenshots and GIFs
+## Screenshots
 
 <p float="left">
   <img src="https://github.com/fahaddhabib/news-app/blob/master/screenshots/ss1.jpg" width="200" />
@@ -55,7 +57,6 @@ The app uses the NewsAPI, and you need to obtain an API key. Follow these steps:
   <img src="https://github.com/fahaddhabib/news-app/blob/master/screenshots/ss5.jpg" width="200" />
 </p>
 
-![App Tutorial](https://github.com/fahaddhabib/news-app/blob/testbranch1/screenshots/newsappgif.gif)
 Contributing
 
 If you would like to contribute to the project, feel free to fork the repository, create a new branch, and submit a pull request.
